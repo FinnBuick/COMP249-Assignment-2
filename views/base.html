@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" href="static/style.css" type="text/css">
+        <title>{{title}}</title>
 
-    <title>{{title}}</title>
+        <nav>
+            <ul>
+                <li><a class="active" href="/jobsearch">Job Search</a></li>
+                <li><input class="search" type="text" name="search" placeholder="Search.."></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/companyreviews">Company Reviews</a></li>
+                <li><button class="login" type="button">Log In</button></li>
+                <li><input class="login" type="text" placeholder="Password"></li>
+                <li><input class="login" type="text" placeholder="Username"></li>
+            </ul>
+        </nav>
 
-  </head>
+    </head>
 
-  <body>
+    <body>
 
-        {{!base}}
+    <div class="container">
 
+            {{!base}}
+
+        <div class="footer">
+            Copyright &copy; 2018 Finneas Buick.
+        </div>
     </div>
 
-  </body>
+
+
+    </body>
 </html>

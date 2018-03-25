@@ -1,0 +1,127 @@
+/* CSS Stylesheet for the COMP249 Jobs Board */
+/* Author: Your Name                     */
+
+html {
+    background-color: #c7c7c7;
+    color: #000000;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color:#546e7a;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+nav li a {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 1.25em;
+}
+
+nav li a:hover {
+	background-color: #29434e;
+}
+
+nav .selected {
+	background-color: #29434e;
+}
+
+nav input[type=text] {
+	display: block;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    border-radius: 3px;
+}
+
+.search {
+	float: left;
+}
+
+.login {
+	float: right;
+}
+
+button {
+	display: block;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    border-radius: 3px;
+}
+
+.content {
+	margin: auto;
+	margin-top: 60px;
+	width: 70%;
+	background-color: white;
+	padding: 20px;
+	margin-top: 10px;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.job {
+	background-color: white;
+	padding: 20px;
+	margin-top: 10px;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.job:hover {
+	background-color: #ededed;
+}
+
+.jobtitle {
+	font-size: 1.25em;
+	border-bottom: 1px solid lightgrey;
+	padding-bottom: 5px;
+}
+
+.company {
+	padding: 5px;
+}
+
+.location {
+	padding: 5px;
+}
+
+.description {
+	padding: 5px;
+}
+
+.footer {
+	padding: 50px;
+	text-align: center;
+}

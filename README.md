@@ -1,6 +1,6 @@
-#COMP249 Web Application Assignment 2018
+# COMP249 Web Application Assignment 2018
 
-###Starter Pack
+### Starter Pack
 
 This repository contains the starter code for the 
 2018 web application assignment for COMP249.  You can download
