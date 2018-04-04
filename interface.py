@@ -13,6 +13,18 @@ def position_list(db, limit=10):
     Returns a list of tuples  (id, timestamp, owner, title, location, company, description)
     """
 
+    sql = """
+            SELECT id, timestamp, owner, title, location, company, description
+            FROM positions
+            ORDER BY timestamp DESC
+            LIMIT ?
+            """
+
+    c = db.cursor()
+    res = []
+    for row in c.execute(sql, (limit, )):
+        res.append(row)
+    return res
 
 
 def position_get(db, id):
@@ -23,7 +35,14 @@ def position_get(db, id):
 
     """
 
-
+    sql = """
+            SELECT id, timestamp, owner, title, location, company, description
+            FROM positions
+            WHERE id = ?
+            """
+    c = db.cursor()
+    c.execute(sql, (id,))
+    return c.fetchone()
 
 
 def position_add(db, usernick, title, location, company, description):
@@ -33,6 +52,18 @@ def position_add(db, usernick, title, location, company, description):
 
     Return True if the record was added, False if not."""
 
+    c = db.cursor()
+    c.execute("""SELECT count(*) FROM users WHERE nick = ?""", (usernick,))
+    data = c.fetchone()[0]
 
+    if data == 0:
+        return False
+    else:
+        sql = """
+                INSERT INTO positions (owner, title, location, company, description)
+                VALUES (?, ?, ?, ?, ?)
+                """
 
-
+        c.execute(sql, (usernick, title, location, company, description))
+        db.commit()
+        return True

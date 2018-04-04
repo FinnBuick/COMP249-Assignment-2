@@ -81,14 +81,18 @@ button {
 
 .content {
 	margin: auto;
+	margin-top: 70px;
+	width: 70%;
+}
+
+.contentpanel {
+	margin: auto;
 	margin-top: 60px;
 	width: 70%;
 	background-color: white;
 	padding: 20px;
-	margin-top: 10px;
 	border-radius: 5px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .job {
