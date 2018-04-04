@@ -22,13 +22,12 @@ class Level2FunctionalTests(unittest.TestCase):
 
     def setUp(self):
         self.app = TestApp(main.app)
-        # init an in-memory database
         self.db = sqlite3.connect(DATABASE_NAME)
         create_tables(self.db)
         self.users, self.positions = sample_data(self.db)
 
     def tearDown(self):
-
+        self.db.close()
         os.unlink(DATABASE_NAME)
 
     def test_home_page_lists_posts(self):
@@ -39,14 +38,15 @@ class Level2FunctionalTests(unittest.TestCase):
         result = self.app.get('/')
         # look for the title of each position in the returned page
         # need to escape any special characters
-        for position in self.positions:
+        # need the most recent 10 posts which are the first ones in self.positions
+        for position in self.positions[:10]:
             title = html.escape(position[2])
             self.assertIn(title, result)
 
         # check the order of positions, look for the date strings
         # and check that they occur in order
         lastloc = -1
-        dates = [position[0] for position in self.positions]
+        dates = [position[0] for position in self.positions[:10]]
         for date in sorted(dates, reverse=True):
             loc = result.text.find(date.strftime("%Y-%m-%d %H:%M:%S"))
             self.assertNotEqual(-1, loc, "date string '%s' not found in page" % date)

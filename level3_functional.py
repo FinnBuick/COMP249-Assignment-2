@@ -7,6 +7,7 @@ from bottle.ext import sqlite
 import bottle
 from webtest import TestApp
 from random import choice
+import os
 
 from database import create_tables, sample_data
 import main
@@ -22,10 +23,13 @@ class Level3FunctionalTests(unittest.TestCase):
 
     def setUp(self):
         self.app = TestApp(main.app)
-        # init an in-memory database
-        db = sqlite3.connect(DATABASE_NAME)
-        create_tables(db)
-        self.users, self.positions = sample_data(db)
+        self.db = sqlite3.connect(DATABASE_NAME)
+        create_tables(self.db)
+        self.users, self.positions = sample_data(self.db)
+
+    def tearDown(self):
+        self.db.close()
+        os.unlink(DATABASE_NAME)
 
     def doLogin(self, user, password):
         """Perform a login with some validation along the way"""
