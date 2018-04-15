@@ -57,7 +57,7 @@ class Level2FunctionalTests(unittest.TestCase):
         """As a visitor to the site, I can click on the "Read More" link
         after a position description on the home page,
         I see a page with the full description of the position at
-        the URL /position/DD where DD is the position id."""
+        the URL /positions/DD where DD is the position id."""
 
         response = self.app.get('/')
 

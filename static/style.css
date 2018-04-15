@@ -125,6 +125,32 @@ button {
 	padding: 5px;
 }
 
+.meta {
+    padding: 5px;
+    padding-bottom: 5px;
+    float: right;
+    color: grey;
+}
+
+.readmore {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    width: 80px;
+    background-color: buttonface;
+	display: block;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.readmore:hover {
+    background-color: lightgrey;
+}
+
 .footer {
 	padding: 50px;
 	text-align: center;
