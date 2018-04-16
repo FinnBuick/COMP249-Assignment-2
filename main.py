@@ -1,10 +1,14 @@
-__author__ = 'Steve Cassidy'
+__author__ = 'Finneas Buick'
 
 from bottle import Bottle, template, static_file, request
 import interface
 
 app = Bottle()
 
+INFO = {
+        'title': 'Welcome to Jobs',
+        'message': 'Hello World!'
+    }
 
 @app.route('/')
 @app.route('/jobsearch')
@@ -12,16 +16,9 @@ def index(db):
     """Handles the initial page by displaying a list
      of positions to the user"""
 
-    global info
-
-    info = {
-        'title': 'Welcome to Jobs',
-        'message': 'Hello World!'
-    }
-
     list = interface.position_list(db)
 
-    return template('index', info, list=list)
+    return template('index', INFO, list=list)
 
 
 @app.route('/positions/<id>')
@@ -31,7 +28,7 @@ def positions(db, id):
 
     position = interface.position_get(db, id)
 
-    return template('position',info, position=position)
+    return template('position',INFO, position=position)
 
 
 @app.route('/static/<filename:path>')
@@ -44,8 +41,8 @@ def static(filename):
 @app.route('/about')
 def about():
     """Handles the about page"""
-    return template('about', info)
 
+    return template('about', INFO)
 
 
 

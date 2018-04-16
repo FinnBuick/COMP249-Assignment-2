@@ -3,13 +3,30 @@ Created on Mar 26, 2012
 
 @author: steve
 """
-
+import database
 # this variable MUST be used as the name for the cookie used by this application
 COOKIE_NAME = 'sessionid'
 
 
 def check_login(db, usernick, password):
     """returns True if password matches stored"""
+
+    hash = database.password_hash(password)
+
+    sql = """
+    SELECT password
+    FROM users
+    WHERE nick=?;
+    """
+
+    c = db.cursor()
+    c.execute(sql,(usernick,))
+    stored = c.fetchone()
+
+    if stored is not None and hash == stored[0]:
+        return True
+    else:
+        return False
 
 
 def generate_session(db, usernick):
