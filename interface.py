@@ -21,10 +21,8 @@ def position_list(db, limit=10):
             """
 
     c = db.cursor()
-    res = []
-    for row in c.execute(sql, (limit, )):
-        res.append(row)
-    return res
+    c.execute(sql, (limit, ))
+    return [row for row in c]
 
 
 def position_get(db, id):

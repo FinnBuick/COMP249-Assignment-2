@@ -43,6 +43,23 @@ nav li a {
 	font-size: 1.25em;
 }
 
+nav form input[type=text] {
+    float: right;
+    color: grey;
+}
+
+nav form input[type=submit] {
+    float: right;
+    display: block;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    border-radius: 3px;
+}
+
+
 nav li a:hover {
 	background-color: #29434e;
 }

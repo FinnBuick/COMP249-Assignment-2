@@ -15,9 +15,11 @@
                 <li><input class="search" type="text" name="search" placeholder="Search.."></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/companyreviews">Company Reviews</a></li>
-                <li><button class="login" type="button">Log In</button></li>
-                <li><input class="login" type="text" placeholder="Password"></li>
-                <li><input class="login" type="text" placeholder="Username"></li>
+                <form action="/login" method="post">
+                    <input type="submit" value="Login">
+                    <input type="text" value="Password" name="password">
+                    <input type="text" value="Username" name="username">
+                </form>
             </ul>
         </nav>
 
