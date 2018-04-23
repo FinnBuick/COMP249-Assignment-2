@@ -1,7 +1,7 @@
 __author__ = 'Finneas Buick'
 
-from bottle import Bottle, template, static_file, request
-import interface
+from bottle import Bottle, template, static_file, request, redirect
+import interface, users
 
 app = Bottle()
 
@@ -17,8 +17,9 @@ def index(db):
      of positions to the user"""
 
     list = interface.position_list(db)
+    loggedIn = users.session_user(db)
 
-    return template('index', INFO, list=list)
+    return template('index', INFO, list=list, loggedIn=loggedIn)
 
 
 @app.route('/positions/<id>')
@@ -44,6 +45,16 @@ def about():
 
     return template('about', INFO)
 
+@app.route('/login', method="POST")
+def login(db):
+    """Handles login"""
+
+    username = request.forms.get('username')
+    password = request.forms.get('password')
+
+    if users.check_login(db, username, password):
+        users.generate_session(db, username)
+        redirect('/')
 
 
 if __name__ == '__main__':

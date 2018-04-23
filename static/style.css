@@ -45,7 +45,7 @@ nav li a {
 
 nav form input[type=text] {
     float: right;
-    color: grey;
+    color: black;
 }
 
 nav form input[type=submit] {
@@ -76,6 +76,13 @@ nav input[type=text] {
     margin-right: 16px;
     font-size: 17px;
     border-radius: 3px;
+}
+
+nav p {
+    float: right;
+	color: white;
+	text-align: center;
+	padding-right: 10px;
 }
 
 .search {

@@ -6,7 +6,6 @@ Created on Mar 26, 2012
 from bottle import response, request
 import database
 import uuid
-import re
 # this variable MUST be used as the name for the cookie used by this application
 COOKIE_NAME = 'sessionid'
 
@@ -87,5 +86,3 @@ def session_user(db):
         return None
     else:
         return usernick[0]
-
-
