@@ -13,13 +13,13 @@ INFO = {
 @app.route('/')
 @app.route('/jobsearch')
 def index(db):
-    """Handles the initial page by displaying a list
+    """Handles the initial page by displaying a positions
      of positions to the user"""
 
-    list = interface.position_list(db)
-    loggedIn = users.session_user(db)
+    positions = interface.position_list(db)
+    user = users.session_user(db)
 
-    return template('index', INFO, list=list, loggedIn=loggedIn)
+    return template('index', INFO, positions=positions, user=user)
 
 
 @app.route('/positions/<id>')
@@ -49,12 +49,25 @@ def about():
 def login(db):
     """Handles login"""
 
-    username = request.forms.get('username')
+    username = request.forms.get('nick')
     password = request.forms.get('password')
 
     if users.check_login(db, username, password):
         users.generate_session(db, username)
         redirect('/')
+    else:
+        positions = interface.position_list(db)
+        messages = 'Login Failed, please try again'
+        redirect('/')
+
+
+@app.route('/logout', method='POST')
+def logout(db):
+    """Handles logout"""
+
+    user = users.session_user(db)
+    users.delete_session(db, user)
+    redirect('/')
 
 
 if __name__ == '__main__':

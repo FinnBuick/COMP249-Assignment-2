@@ -16,14 +16,17 @@
                 <li><a href="/about">About</a></li>
                 <li><a href="/companyreviews">Company Reviews</a></li>
 
-                %if loggedIn is None:
-                <form action="/login" method="post">
-                    <input type="submit" value="Login">
-                    <input type="text" placeholder="Password" name="password">
-                    <input type="text" placeholder="Username" name="username">
-                </form>
+                %if user is None:
+                    <form action="/login" id="loginform" method="post">
+                        <input type="submit" value="Login">
+                        <input type="text" placeholder="Password" name="password">
+                        <input type="text" placeholder="Username" name="nick">
+                    </form>
                 %else:
-                <li><p style="float: right;">Logged in as {{loggedIn}}</p></li>
+                    <form action="/logout" id="logoutform" method="post">
+                        <input type="submit" value="Logout">
+                    </form>
+                    <li><p>Logged in as {{user}}</p></li>
                 %end
             </ul>
         </nav>
