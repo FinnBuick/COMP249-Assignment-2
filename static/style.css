@@ -59,6 +59,9 @@ nav form input[type=submit] {
     border-radius: 3px;
 }
 
+nav form input[type=submit]:hover {
+    background-color: lightgrey;
+}
 
 nav li a:hover {
 	background-color: #29434e;
@@ -68,21 +71,33 @@ nav .selected {
 	background-color: #29434e;
 }
 
-nav input[type=text] {
+input {
 	display: block;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
+	padding: 8px;
+    margin: 8px 5px;
+    border: 1px solid grey;
+    font-size: 15px;
     border-radius: 3px;
 }
 
+.text-area {
+	display: block;
+	padding: 8px;
+    margin: 8px 5px;
+    border: 1px solid grey;
+    font-size: 15px;
+    border-radius: 3px;
+    width: 90%;
+}
+
 nav p {
+    padding-top: 5px;
+    padding-bottom: 5px;
     float: right;
-	color: white;
+    color: white;
 	text-align: center;
 	padding-right: 10px;
+	font-size: .8em;
 }
 
 .search {
@@ -105,7 +120,7 @@ button {
 
 .content {
 	margin: auto;
-	margin-top: 70px;
+	margin-top: 60px;
 	width: 70%;
 }
 
@@ -173,6 +188,15 @@ button {
 
 .readmore:hover {
     background-color: lightgrey;
+}
+
+ul {
+    list-style-type: none;
+}
+
+label {
+    text-align: left;
+    floa: left;
 }
 
 .footer {

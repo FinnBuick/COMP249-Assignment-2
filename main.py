@@ -28,8 +28,8 @@ def positions(db, id):
     single position listing"""
 
     position = interface.position_get(db, id)
-
-    return template('position',INFO, position=position)
+    user = users.session_user(db)
+    return template('position',INFO, position=position, user=user)
 
 
 @app.route('/static/<filename:path>')
@@ -40,10 +40,10 @@ def static(filename):
 
 
 @app.route('/about')
-def about():
+def about(db):
     """Handles the about page"""
-
-    return template('about', INFO)
+    user = users.session_user(db)
+    return template('about', INFO, user=user)
 
 @app.route('/login', method="POST")
 def login(db):
@@ -57,9 +57,8 @@ def login(db):
         redirect('/')
     else:
         positions = interface.position_list(db)
-        messages = 'Login Failed, please try again'
-        redirect('/')
-
+        user = None
+        return template('index', INFO, positions=positions, user=user, messages='Login Failed, please try again')
 
 @app.route('/logout', method='POST')
 def logout(db):
@@ -69,6 +68,20 @@ def logout(db):
     users.delete_session(db, user)
     redirect('/')
 
+
+@app.route('/post', method='POST')
+def post_job(db):
+    """Handles posting a new job and adding it to the database when a valid user is logged in"""
+
+    user = users.session_user(db)
+    title = request.forms.get('title')
+    company = request.forms.get('company')
+    location = request.forms.get('location')
+    description = request.forms.get('description')
+
+    interface.position_add(db, user, title, location, company, description)
+
+    redirect('/')
 
 if __name__ == '__main__':
 

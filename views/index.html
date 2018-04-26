@@ -2,6 +2,23 @@
 
 
 <div class="content">
+    <!-- Post a job if user is logged in -->
+    %if defined('user') and user is not None:
+    <div class="job">
+        <div class="jobtitle">Post a job:</div>
+            <form id='postform' class="" method='post' action='/post'>
+                <ul>
+                    <li><label for="title">Title:</label><input id="title" name="title"></li>
+                    <li><label for="company">Company:</label><input id="company" name="company"></li>
+                    <li><label for="location">Location:</label><input id="location" name="location"></li>
+                    <li><label for="description">Description:</label><br>
+                        <textarea class="text-area" id="description" name="description" rows="4"></textarea></li>
+                    <li><input type="submit" class="submit" name='submit' value='Submit' ></li>
+                </ul>
+            </form>
+    </div>
+    %end
+
     <!-- Display a list of jobs -->
     % for position in positions:
     <div class="job">

@@ -19,14 +19,18 @@
                 %if user is None:
                     <form action="/login" id="loginform" method="post">
                         <input type="submit" value="Login">
-                        <input type="text" placeholder="Password" name="password">
-                        <input type="text" placeholder="Username" name="nick">
+                        <input class="login" type="password" placeholder="Password" name="password">
+                        <input class="login" type="text" placeholder="Username" name="nick">
                     </form>
                 %else:
                     <form action="/logout" id="logoutform" method="post">
                         <input type="submit" value="Logout">
                     </form>
                     <li><p>Logged in as {{user}}</p></li>
+                %end
+
+                %if defined('messages'):
+                <p>{{messages}}</p>
                 %end
             </ul>
         </nav>
